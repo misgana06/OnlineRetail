@@ -18,6 +18,11 @@ public class ProductController {
 	@Autowired
 	ProductDAO pdao;
 	
+	@RequestMapping("/")
+	public ModelAndView index() {
+		return new ModelAndView("redirect:/index.jsp");
+	}
+	
 	@RequestMapping("/add")
 	public ModelAndView addProductDetails() {
 		return new ModelAndView("add","command",new Product());
@@ -35,7 +40,7 @@ public class ProductController {
 		return new ModelAndView("view","productlist",product_list);
 	}
 	
-	@RequestMapping(value="/search", method=RequestMethod.POST)
+	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public ModelAndView displayProductCategory(@RequestParam("category") String cat_name) {
 		List<Product> product_by_cat = pdao.searchProduct(cat_name);
 		return new ModelAndView("viewProduct","product_by_cat_list",product_by_cat);

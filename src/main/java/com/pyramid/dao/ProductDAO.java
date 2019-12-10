@@ -13,6 +13,10 @@ public class ProductDAO {
 
 	JdbcTemplate jdbc;
 	
+	public void setJdbc(JdbcTemplate jt) {
+		this.jdbc = jt;
+	}
+	
 	public int saveProductDetails(Product p) {
 		return jdbc.update("insert into product (name,price,category) values ('" + p.getName() + "', " + p.getPrice() + ", '" + p.getCategory() + "')");
 		
