@@ -16,6 +16,7 @@
 			<div><f:label path="name">Name:</f:label><f:input type="text" path="name" /></div>
 			<div><f:label path="price">Price:</f:label><f:input type="text" path="price" /></div>
 			<div>
+				<f:label path="category">Category:</f:label>
 				<f:select path="category">
 					<f:option path="category" value="Shoes">Shoes</f:option>
 					<f:option path="category" value="Watches">Watches</f:option>

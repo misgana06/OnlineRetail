@@ -33,8 +33,8 @@
    		 <property name="jdbc" ref="jt" />
    </bean>
    
-   <!-- <bean id="cart" class="com.pyramid.dao.CartDAO">
+   <bean id="cart" class="com.pyramid.dao.CartDAO">
    		 <property name="jdbc" ref="jt" />
-   </bean> -->
+   </bean>
    
 </beans>

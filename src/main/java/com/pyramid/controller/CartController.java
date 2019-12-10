@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pyramid.dao.CartDAO;
@@ -25,9 +26,9 @@ public class CartController {
 	ProductDAO pdao;
 	
 	
-	@RequestMapping(value={"addproduct/{p_name}"}, method=RequestMethod.POST)
+	@RequestMapping(value={"/addproduct/{p_name}"}, method=RequestMethod.POST)
 	public ModelAndView addToCart(@PathVariable(value="p_name") final String name, 
-	        @ModelAttribute(value="qty") int qty) {
+			@RequestParam(value="p_qty") int qty) {
 		Product p = pdao.getProductByName(name);
 		double total_price = p.getPrice()*qty;
 		Cart c = new Cart(name,qty,total_price);
