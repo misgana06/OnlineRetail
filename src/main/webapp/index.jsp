@@ -21,7 +21,13 @@
 		<h2>Your Cart</h2>
 		<div>
 			<form method="GET" action="search">
-				<input type="text" name="category" placeholder="Search By Category" />
+				<select>
+					<option value="Shoes">Shoes</option>
+					<option value="Watches">Watches</option>
+					<option value="Hats">Hats</option>
+					<option value="Shirts">Shirts</option>
+					<option value="Pants">Pants</option>
+				</select>
 				<input type="submit" value="Search" />
 			</form>
 			<a href="viewCart">View Cart</a>
