@@ -13,6 +13,10 @@ public class ProductDAO {
 
 	JdbcTemplate jdbc;
 	
+	public void setJdbc(JdbcTemplate jt) {
+		this.jdbc = jt;
+	}
+	
 	public int saveProductDetails(Product p) {
 		return jdbc.update("insert into product (name,price,category) values ('" + p.getName() + "', " + p.getPrice() + ", '" + p.getCategory() + "')");
 		
@@ -36,6 +40,18 @@ public class ProductDAO {
 				p.setName(rs.getString(2));
 				p.setPrice(rs.getDouble(3));
 				p.setCategory(rs.getString(4));
+				return p;
+			}
+		});
+	}
+	
+	public Product getProductByName(String p_name) {
+		return (Product) jdbc.query("select * from product where name = "+p_name, new RowMapper<Product>() {
+			public Product mapRow(ResultSet rs, int row) throws SQLException {
+				Product p = new Product(rs.getString(2),rs.getDouble(3),rs.getString(4));
+				p.getName();
+				p.getPrice();
+				p.getCategory();
 				return p;
 			}
 		});
