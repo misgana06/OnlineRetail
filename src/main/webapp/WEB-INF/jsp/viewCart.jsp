@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,11 +13,8 @@
 <body>
 <h1>Your Cart</h1>
 	<c:choose>
-	<c:when test="${empty cartlist}">
-		<h2>Your Cart is Empty :(</h2>
-	</c:when>
-	<c:otherwise>
-	<table>
+	<c:when test="${fn:length(cartlist) > 0}">
+		<table>
 		<tr>
 			<th>Name</th>
 			<th>Quantity</th>
@@ -31,6 +29,9 @@
 		</c:forEach>
 	</table>
 	<a href="placeOrder">Place Order</a>
+	</c:when>
+	<c:otherwise>
+		<h2>Your Cart is Empty :(</h2>
 	</c:otherwise>
 	</c:choose>
 	<a href="/OnlineRetail">Home</a>

@@ -12,6 +12,8 @@
 </head>
 <body>
 	<h1>All Products in the '<%= request.getParameter("category") %>' Category</h1>
+	<c:choose>
+	<c:when test="${ not empty product_by_cat_list }">
 	<table>
 		<tr>
 			<th>Name</th>
@@ -40,6 +42,11 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</c:when>
+	<c:otherwise>
+		<h2>No Products in this Category :(</h2>
+	</c:otherwise>
+	</c:choose>
 	<a href="/OnlineRetail">Home</a>
 </body>
 </html>

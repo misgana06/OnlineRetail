@@ -11,6 +11,8 @@
 </head>
 <body>
 <h1>All Products</h1>
+	<c:choose>
+	<c:when test="${ not empty productlist }">
 	<table>
 		<tr>
 			<th>Name</th>
@@ -25,6 +27,11 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</c:when>
+	<c:otherwise>
+		<h3>No Products Have Been Added :(</h3>
+	</c:otherwise>
+	</c:choose>
 	<a href="/OnlineRetail">Back</a>
 </body>
 </html>
