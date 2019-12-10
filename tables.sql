@@ -1,7 +1,7 @@
 CREATE TABLE product (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NULL,
-  price DOUBLE(4,2) NULL,
+  price DOUBLE(8,2) NULL,
   category VARCHAR(45) NULL,
   PRIMARY KEY (id));
 

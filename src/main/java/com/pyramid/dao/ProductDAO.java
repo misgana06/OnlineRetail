@@ -13,12 +13,16 @@ public class ProductDAO {
 
 	JdbcTemplate jdbc;
 	
+	public void setJdbc(JdbcTemplate jt) {
+		this.jdbc = jt;
+	}
+	
 	public int saveProductDetails(Product p) {
 		return jdbc.update("insert into product (name,price,category) values ('" + p.getName() + "', " + p.getPrice() + ", '" + p.getCategory() + "')");
 		
 	}
 	public List<Product> searchProduct(String categoryName) {
-		return jdbc.query("select * from product where category = "+categoryName, new RowMapper<Product>() {
+		return jdbc.query("select * from product where category = '"+categoryName + "'", new RowMapper<Product>() {
 			public Product mapRow(ResultSet rs, int row) throws SQLException {
 				Product p = new Product(rs.getString(2),rs.getDouble(3),rs.getString(4));
 				p.getName();
