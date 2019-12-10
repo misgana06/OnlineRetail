@@ -45,4 +45,16 @@ public class ProductDAO {
 		});
 	}
 	
+	public Product getProductByName(String p_name) {
+		return (Product) jdbc.query("select * from product where name = "+p_name, new RowMapper<Product>() {
+			public Product mapRow(ResultSet rs, int row) throws SQLException {
+				Product p = new Product(rs.getString(2),rs.getDouble(3),rs.getString(4));
+				p.getName();
+				p.getPrice();
+				p.getCategory();
+				return p;
+			}
+		});
+	}
+	
 }
