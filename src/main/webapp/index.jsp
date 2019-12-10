@@ -21,7 +21,7 @@
 		<h2>Your Cart</h2>
 		<div>
 			<form method="GET" action="search">
-				<select>
+				<select name="category">
 					<option value="Shoes">Shoes</option>
 					<option value="Watches">Watches</option>
 					<option value="Hats">Hats</option>
