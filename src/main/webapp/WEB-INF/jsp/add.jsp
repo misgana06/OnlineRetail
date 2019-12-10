@@ -28,6 +28,6 @@
 			<div><input type="submit" value="Add Product" /></div>
 		</f:form>
 	</div>
-	<a href="/OnlineRetail">Back</a>
+	<a href="/OnlineRetail">Home</a>
 </body>
 </html>

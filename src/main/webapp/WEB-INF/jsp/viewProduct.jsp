@@ -40,6 +40,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/OnlineRetail">Back</a>
+	<a href="/OnlineRetail">Home</a>
 </body>
 </html>

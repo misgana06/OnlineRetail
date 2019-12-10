@@ -7,6 +7,8 @@
 <title>Online Retail | Purchased</title>
 </head>
 <body>
-
+	<h1>Thank You!</h1>
+	<h3>${ message }</h3>
+	<a href="/OnlineRetail">Back</a>
 </body>
 </html>
