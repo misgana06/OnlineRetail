@@ -8,40 +8,102 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<style type="text/css">
+body {
+	background-color: #fffbf0;
+	font-family: 'Montserrat', sans-serif;
+	align-items: center;
+	text-align: center;
+	margin: 0 auto;
+}
+h1 {
+	font-size: 2.5em;
+}
+.content {
+	margin: 20px auto;
+	padding: 20px 10px 35px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+table {
+  border-collapse: collapse;
+  margin: 10px auto 20px;
+  background-color: #fff;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align:left;
+}
+
+select {
+	font-size: 1em;
+}
+
+.btn {
+	font-size: 0.9em;
+	background-color: #a3ffbc;
+	border: 1px solid #999;
+	border-radius: 5px;
+	color: black;
+	text-decoration: none;
+	padding: 5px 8px;
+	cursor: pointer;
+}
+.btn2 {
+	font-size: 1em;
+	background-color: #9ee8ff;
+	border: 1px solid #999;
+	border-radius: 5px;
+	color: black;
+	margin: 20px 10px;
+	text-decoration: none;
+	padding: 5px 10px;
+}
+</style>
 <title>Online Retail | Products</title>
 </head>
 <body>
-	<h1><c:out value="{ productlist[0].category }"></c:out></h1>
+	<h1>All Products in the '<%= request.getParameter("category") %>' Category</h1>
+	<c:choose>
+	<c:when test="${ not empty product_by_cat_list }">
 	<table>
 		<tr>
 			<th>Name</th>
 			<th>Price</th>
 			<th>Quantity</th>
 			<th>Add to Cart</th>
-			<th></th>
 		</tr>
-		<c:forEach var="product" items="${ productlist }">
+		<c:forEach var="product" items="${ product_by_cat_list }">
 			<tr>
+				<form method="POST" action="addproduct/${ product.name }">
 				<td>${ product.name }</td>
 				<td>${ product.price }</td>
 				<td>
-					<f:select path="p_qty">
-						<f:option path="p_qty" value="0">0</f:option>
-						<f:option path="p_qty" value="1">1</f:option>
-						<f:option path="p_qty" value="2">2</f:option>
-						<f:option path="p_qty" value="3">3</f:option>
-						<f:option path="p_qty" value="4">4</f:option>
-						<f:option path="p_qty" value="5">5</f:option>
-						<f:option path="p_qty" value="6">6</f:option>
-						<f:option path="p_qty" value="7">7</f:option>
-						<f:option path="p_qty" value="8">8</f:option>
-						<f:option path="p_qty" value="9">9</f:option>
-					</f:select>
+					<select name="p_qty">
+						<option value="0" selected disabled>0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
 				</td>
-				<td><input type="submit" value="Add to Cart"></td>
+				<td><input class="btn" type="submit" value="Add to Cart"></td>
+				</form>
+				
+				
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/OnlineRetail">Back</a>
+	</c:when>
+	<c:otherwise>
+		<h2>No Products in this Category :(</h2>
+	</c:otherwise>
+	</c:choose>
+	<a class="btn2" href="/OnlineRetail">Home</a>
 </body>
 </html>
